@@ -48,9 +48,11 @@ The add-on doesn’t yet prevent a product from existing in more than 1 product 
 
 OR you can just install it with WordPress by going to Plugins &rarr; Add New &rarr; and type this plugin's name
 
+Go to Affiliates &rarr; Affiliates, and click "edit" next to the affiliate you'd like to set up the product rates for.
+
 == Screenshots ==
 
-1. coming soon 
+1. The product rates UI. Shown with 2 integrations active, Easy Digital Downloads and WooCommerce. The same UI is also available when adding an affiliate.
 
 == Changelog ==
 
