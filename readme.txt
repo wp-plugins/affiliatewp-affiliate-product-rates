@@ -1,4 +1,4 @@
-=== AffiliateWP Affiliate Product Rates ===
+=== AffiliateWP - Affiliate Product Rates ===
 Contributors: sumobi, mordauk
 Tags: AffiliateWP, affiliate, Pippin Williamson, Andrew Munro, mordauk, pippinsplugins, sumobi, ecommerce, e-commerce, e commerce, selling, referrals, easy digital downloads, digital downloads, woocommerce, woo, products, product, rates
 Requires at least: 3.9
@@ -30,9 +30,9 @@ The possibilities are endless! You can also set per-product referral rates per-a
 1. Easy Digital Downloads
 2. WooCommerce
 
-**To Do**
+**Known Issues**
 
-1. Prevent the same product from being selected again if already selected in another product rate.
+The add-on doesn’t yet prevent a product from existing in more than 1 product rate. Be careful you don’t accidentally add a product to more than location or one rate will be ignored.
 
 **What is AffiliateWP?**
 
@@ -50,7 +50,7 @@ OR you can just install it with WordPress by going to Plugins &rarr; Add New &ra
 
 == Screenshots ==
 
-1. 
+1. coming soon 
 
 == Changelog ==
 
