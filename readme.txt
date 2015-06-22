@@ -2,8 +2,8 @@
 Contributors: sumobi, mordauk
 Tags: AffiliateWP, affiliate, Pippin Williamson, Andrew Munro, mordauk, pippinsplugins, sumobi, ecommerce, e-commerce, e commerce, selling, referrals, easy digital downloads, digital downloads, woocommerce, woo, products, product, rates
 Requires at least: 3.9
-Tested up to: 4.1.1
-Stable tag: 1.0.1
+Tested up to: 4.2.2
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,11 @@ Go to Affiliates &rarr; Affiliates, and click "edit" next to the affiliate you'd
 1. The product rates UI. Shown with 2 integrations active, Easy Digital Downloads and WooCommerce. The same UI is also available when adding an affiliate.
 
 == Changelog ==
+
+= 1.0.2 =
+* Fix: Email tags were empty in affiliate administration email
+* Fix: Affiliates were registered as "pending" even though affiliate approval was disabled 
+
 
 = 1.0.1 =
 * Fix: Display issues on the edit affiliate page
