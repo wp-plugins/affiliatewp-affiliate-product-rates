@@ -5,7 +5,7 @@
  * Description: Set per-affiliate product referral rates
  * Author: Pippin Williamson and Andrew Munro
  * Author URI: http://affiliatewp.com
- * Version: 1.0.1
+ * Version: 1.0.2
  * Text Domain: affiliatewp-affiliate-product-rates
  * Domain Path: languages
  *
@@ -54,7 +54,7 @@ if ( ! class_exists( 'AffiliateWP_Affiliate_Product_Rates' ) ) {
 		 *
 		 * @since 1.0
 		 */
-		private $version = '1.0.1';
+		private $version = '1.0.2';
 
 		/**
 		 * Main AffiliateWP_Affiliate_Product_Rates Instance
@@ -168,13 +168,10 @@ if ( ! class_exists( 'AffiliateWP_Affiliate_Product_Rates' ) ) {
 			add_filter( 'affwp_calc_referral_amount', array( $this, 'calculate_referral_amount' ), 10, 5 );
 
 			// update the product rates when the affiliate is updated
-		//	add_action( 'affwp_update_affiliate_data', array( $this, 'update_affiliate' ), 10, 2 );
-			
 			add_action( 'affwp_post_update_affiliate', array( $this, 'update_affiliate' ), 10, 2 );
 
-
 			// add the product rates when adding a new affiliate
-			add_action( 'affwp_post_insert_affiliate', array( $this, 'add_affiliate' ), 10, 2 );
+			add_action( 'affwp_insert_affiliate', array( $this, 'add_affiliate_rates' ) );
 		}
 
 		/**
@@ -226,14 +223,15 @@ if ( ! class_exists( 'AffiliateWP_Affiliate_Product_Rates' ) ) {
 
 		/**
 		 * Add product rates for the  affiliate
-		 * 
+		 * This is done when an affiliate is added to the DB
 		 */
+		public function add_affiliate_rates( $affiliate_id = 0 ) {
 
-		public function add_affiliate( $affiliate_id, $data ) {
-
-			$user_id = affwp_get_affiliate_user_id( $affiliate_id );
-
-			$this->save_product_rates( $user_id, $_POST );
+			// only add rates from admin
+			if ( is_admin() ) {
+				$user_id = affwp_get_affiliate_user_id( $affiliate_id );
+				$this->save_product_rates( $user_id, $_POST );
+			}
 
 		}
 	
@@ -291,10 +289,21 @@ if ( ! class_exists( 'AffiliateWP_Affiliate_Product_Rates' ) ) {
 
 					}
 				}
+
+				// get existing array
+				$existing = get_user_meta( $user_id, 'affwp_product_rates', true );
+
+				// if $saved if empty, delete it
+				if ( empty( $saved ) ) {
+					delete_user_meta( $user_id, 'affwp_product_rates' );
+				} else {
+					// not empty, let's continue
+					// save to user meta if product data exists
+					update_user_meta( $user_id, 'affwp_product_rates', $saved );
+				}
+				
 			}
 
-			// save to user meta
-			update_user_meta( $user_id, 'affwp_product_rates', $saved );
 		}
 
 		/**
